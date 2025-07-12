@@ -2,6 +2,8 @@
 
 A simple tool for patching Operation Flashpoint: Dragon Rising.
 
+[<img src="https://github.com/user-attachments/assets/ee17a7ad-3dee-4e24-bfe9-5e9536948777">](https://discord.gg/Z88NnTgpWU)
+
 ## 🐉 OFDR Patcher
 
 OFDR Patcher is a simple tool to patch **[Operation Flashpoint: Dragon Rising](https://en.wikipedia.org/wiki/Operation_Flashpoint:_Dragon_Rising)**, a realistic, tactical mil-sim shooter game released by [Codemasters](https://www.codemasters.com) in 2009. The game was initially released as version 1.00, until v1.01 was released and later v1.02. However, by default the game comes with several screen resolutions locked (including 4K), a VRAM bug, and on v1.02 mod support was disabled. This patcher fixes these issues by upgrading the game executable to patched v1.02.
