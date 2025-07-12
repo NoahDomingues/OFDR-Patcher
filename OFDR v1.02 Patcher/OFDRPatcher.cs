@@ -3,11 +3,21 @@ using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace OFDR_v1._02_Patcher
 {
     public partial class OFDRPatcher : Form
     {
+        // Progress bar colors
+        public const int PBM_SETSTATE = 0x0410;
+        public const int PBST_NORMAL = 0x0001;
+        public const int PBST_ERROR = 0x0002;
+        public const int PBST_PAUSED = 0x0003;
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        public static extern IntPtr SendMessage(IntPtr hWnd, int msg, IntPtr wParam, IntPtr lParam);
+
         public OFDRPatcher()
         {
             InitializeComponent();
@@ -41,12 +51,14 @@ namespace OFDR_v1._02_Patcher
             string backupFile = Path.Combine(inputDirectory, "OFDR.exe.bak");
 
             // Step 0: Starting
+            SetProgressBarStateNormal();
             UpdateStatus(0, "Starting patch process...");
 
             // Check if OFDR.exe exists
             if (!File.Exists(targetFile))
             {
-                UpdateStatus(0, "Error: OFDR.exe not found in the selected directory.");
+                UpdateStatus(100, "Error: OFDR.exe not found in the selected directory.");
+                SetProgressBarStateRed();
                 MessageBox.Show("Error: OFDR.exe not found in the selected directory.", "Patch Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -64,6 +76,7 @@ namespace OFDR_v1._02_Patcher
                     if (resourceStream == null)
                     {
                         UpdateStatus(40, "Error: Embedded resource not found.");
+                        SetProgressBarStateRed();
                         throw new FileNotFoundException("Embedded resource not found.");
                     }
 
@@ -80,7 +93,8 @@ namespace OFDR_v1._02_Patcher
             }
             catch (Exception ex)
             {
-                UpdateStatus(0, $"An error occurred while patching: {ex.Message}");
+                UpdateStatus(100, $"An error occurred while patching: {ex.Message}");
+                SetProgressBarStateRed();
                 MessageBox.Show($"An error occurred while patching:\n{ex.Message}", "Patch Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 PromptToJoinDiscord();
             }
@@ -93,12 +107,14 @@ namespace OFDR_v1._02_Patcher
             string backupFile = Path.Combine(inputDirectory, "OFDR.exe.bak");
 
             // Step 0: Starting
+            SetProgressBarStateNormal();
             UpdateStatus(0, "Starting unpatch process...");
 
             // Check if backup file exists
             if (!File.Exists(backupFile))
             {
-                UpdateStatus(0, "Error: No backup found. Cannot unpatch.");
+                UpdateStatus(100, "Error: No backup found. Cannot unpatch.");
+                SetProgressBarStateRed();
                 MessageBox.Show("Error: No backup found. Cannot unpatch.", "Unpatch Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -121,7 +137,8 @@ namespace OFDR_v1._02_Patcher
             }
             catch (Exception ex)
             {
-                UpdateStatus(0, $"An error occurred while unpatching: {ex.Message}");
+                UpdateStatus(100, $"An error occurred while unpatching: {ex.Message}");
+                SetProgressBarStateRed();
                 MessageBox.Show($"An error occurred while unpatching:\n{ex.Message}", "Unpatch Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 PromptToJoinDiscord();
             }
@@ -162,6 +179,8 @@ namespace OFDR_v1._02_Patcher
 
         private void manualPatchButton_Click(object sender, EventArgs e)
         {
+            SetProgressBarStateNormal();
+            progressBar.Value = 0;
             using (var folderDialog = new FolderBrowserDialog())
             {
                 folderDialog.Description = "Select your game installation directory";
@@ -174,7 +193,8 @@ namespace OFDR_v1._02_Patcher
                 }
                 else
                 {
-                    UpdateStatus(0, "Patch canceled: no directory selected.");
+                    UpdateStatus(100, "Patch canceled: no directory selected.");
+                    SetProgressBarStateRed();
                 }
             }
         }
@@ -265,6 +285,22 @@ namespace OFDR_v1._02_Patcher
             infoButton.Image = Properties.Resources.info;
         }
 
+        // Progress bar color-changing methods
+        private void SetProgressBarStateNormal()
+        {
+            SendMessage(progressBar.Handle, PBM_SETSTATE, (IntPtr)PBST_NORMAL, IntPtr.Zero); // Blue
+        }
+
+        private void SetProgressBarStatePaused()
+        {
+            SendMessage(progressBar.Handle, PBM_SETSTATE, (IntPtr)PBST_PAUSED, IntPtr.Zero); // Yellow
+        }
+
+        private void SetProgressBarStateRed()
+        {
+            SendMessage(progressBar.Handle, PBM_SETSTATE, (IntPtr)PBST_ERROR, IntPtr.Zero); // Red
+        }
+
         // MOVE FROM HERE
 
         private void PromptToJoinDiscord()
@@ -296,13 +332,15 @@ namespace OFDR_v1._02_Patcher
 
         private void patchButton_Click(object sender, EventArgs e)
         {
+            SetProgressBarStateNormal();
+            progressBar.Value = 0;
             // Potential default install locations
             string[] installPaths =
             {
-        @"C:\Program Files (x86)\Steam\steamapps\common\Operation Flashpoint Dragon Rising",
-        @"C:\Program Files\Codemasters\Operation Flashpoint Dragon Rising",
-        @"C:\Program Files (x86)\Codemasters\Operation Flashpoint Dragon Rising"
-    };
+            @"C:\Program Files (x86)\Steam\steamapps\common\Operation Flashpoint Dragon Rising",
+            @"C:\Program Files\Codemasters\Operation Flashpoint Dragon Rising",
+            @"C:\Program Files (x86)\Codemasters\Operation Flashpoint Dragon Rising"
+            };
 
             string detectedPath = null;
 
@@ -335,13 +373,16 @@ namespace OFDR_v1._02_Patcher
                 }
                 else
                 {
-                    UpdateStatus(0, "Patch canceled: game directory not found.");
+                    UpdateStatus(100, "Patch canceled: game directory not found.");
+                    SetProgressBarStateRed();
                 }
             }
         }
 
         private void manualUnpatchButton_Click(object sender, EventArgs e)
         {
+            SetProgressBarStateNormal();
+            progressBar.Value = 0;
             using (var folderDialog = new FolderBrowserDialog())
             {
                 folderDialog.Description = "Select your game installation directory";
@@ -354,7 +395,8 @@ namespace OFDR_v1._02_Patcher
                 }
                 else
                 {
-                    UpdateStatus(0, "Unpatch canceled: no directory selected.");
+                    UpdateStatus(100, "Unpatch canceled: no directory selected.");
+                    SetProgressBarStateRed();
                 }
             }
         }
@@ -369,6 +411,8 @@ namespace OFDR_v1._02_Patcher
 
         private void unpatchButton_Click(object sender, EventArgs e)
         {
+            SetProgressBarStateNormal();
+            progressBar.Value = 0;
             // Common install locations to check
             string[] installPaths =
             {
@@ -408,8 +452,25 @@ namespace OFDR_v1._02_Patcher
                 }
                 else
                 {
-                    UpdateStatus(0, "Unpatch canceled: no valid backup found.");
+                    UpdateStatus(100, "Unpatch canceled: no valid backup found.");
+                    SetProgressBarStateRed();
                 }
+            }
+        }
+
+        private void discordLink_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                System.Diagnostics.Process.Start(new ProcessStartInfo
+                {
+                    FileName = "https://discord.gg/Z88NnTgpWU",
+                    UseShellExecute = true
+                });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Unable to open link: " + ex.Message);
             }
         }
     }

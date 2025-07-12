@@ -33,7 +33,7 @@
             closeButton = new PictureBox();
             patcherLogo = new PictureBox();
             titleLabel = new Label();
-            aboutText = new Label();
+            copyrightLabel = new Label();
             aboutLabel1 = new Label();
             aboutLabel2 = new Label();
             aboutLabel3 = new Label();
@@ -59,6 +59,7 @@
             closeButton.SizeMode = PictureBoxSizeMode.Zoom;
             closeButton.TabIndex = 14;
             closeButton.TabStop = false;
+            toolTip.SetToolTip(closeButton, "Close");
             closeButton.Click += closeButton_Click;
             closeButton.MouseEnter += closeButton_MouseEnter;
             closeButton.MouseLeave += closeButton_MouseLeave;
@@ -90,17 +91,18 @@
             toolTip.SetToolTip(titleLabel, "OFDR Patcher");
             titleLabel.Click += titleLabel_Click;
             // 
-            // aboutText
+            // copyrightLabel
             // 
-            aboutText.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            aboutText.AutoSize = true;
-            aboutText.Font = new Font("Segoe UI Semilight", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            aboutText.ForeColor = Color.White;
-            aboutText.Location = new Point(121, 260);
-            aboutText.Name = "aboutText";
-            aboutText.Size = new Size(140, 20);
-            aboutText.TabIndex = 17;
-            aboutText.Text = "© Noah Domingues";
+            copyrightLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            copyrightLabel.AutoSize = true;
+            copyrightLabel.Font = new Font("Segoe UI Semilight", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            copyrightLabel.ForeColor = Color.White;
+            copyrightLabel.Location = new Point(121, 260);
+            copyrightLabel.Name = "copyrightLabel";
+            copyrightLabel.Size = new Size(140, 20);
+            copyrightLabel.TabIndex = 17;
+            copyrightLabel.Text = "© Noah Domingues";
+            toolTip.SetToolTip(copyrightLabel, "Copyright © Noah Domingues. See LICENSE for details.");
             // 
             // aboutLabel1
             // 
@@ -189,7 +191,7 @@
             Controls.Add(aboutLabel3);
             Controls.Add(aboutLabel2);
             Controls.Add(aboutLabel1);
-            Controls.Add(aboutText);
+            Controls.Add(copyrightLabel);
             Controls.Add(titleLabel);
             Controls.Add(patcherLogo);
             Controls.Add(closeButton);
@@ -211,7 +213,7 @@
         private PictureBox closeButton;
         private PictureBox patcherLogo;
         private Label titleLabel;
-        private Label aboutText;
+        private Label copyrightLabel;
         private Label aboutLabel1;
         private Label aboutLabel2;
         private Label aboutLabel3;

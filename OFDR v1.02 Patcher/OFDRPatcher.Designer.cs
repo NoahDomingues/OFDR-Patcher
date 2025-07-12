@@ -64,6 +64,7 @@
             discordLink.Text = "Discord Server";
             discordLink.TextAlign = ContentAlignment.MiddleLeft;
             toolTip.SetToolTip(discordLink, "Join our Discord community");
+            discordLink.Click += discordLink_Click;
             // 
             // githubLink
             // 
@@ -104,7 +105,7 @@
             patchButton.Size = new Size(154, 37);
             patchButton.TabIndex = 6;
             patchButton.Text = "Patch OFDR";
-            toolTip.SetToolTip(patchButton, "Upgrade OFDR to v1.02 patched.");
+            toolTip.SetToolTip(patchButton, "Upgrade OFDR to v1.02 patched");
             patchButton.UseVisualStyleBackColor = false;
             patchButton.Click += patchButton_Click;
             patchButton.MouseEnter += patchButton_MouseEnter;
@@ -121,7 +122,7 @@
             unpatchButton.Size = new Size(154, 37);
             unpatchButton.TabIndex = 7;
             unpatchButton.Text = "Unpatch OFDR";
-            toolTip.SetToolTip(unpatchButton, "Restore patched OFDR to its original state.");
+            toolTip.SetToolTip(unpatchButton, "Restore patched OFDR to its original state");
             unpatchButton.UseVisualStyleBackColor = false;
             unpatchButton.Click += unpatchButton_Click;
             unpatchButton.MouseEnter += unpatchButton_MouseEnter;
@@ -170,7 +171,7 @@
             manualUnpatchButton.SizeMode = PictureBoxSizeMode.Zoom;
             manualUnpatchButton.TabIndex = 12;
             manualUnpatchButton.TabStop = false;
-            toolTip.SetToolTip(manualUnpatchButton, "Manually select your game installation directory for unpatching.");
+            toolTip.SetToolTip(manualUnpatchButton, "Manually select your game installation directory for unpatching");
             manualUnpatchButton.Click += manualUnpatchButton_Click;
             manualUnpatchButton.MouseEnter += manualUnpatchButton_MouseEnter;
             manualUnpatchButton.MouseLeave += manualUnpatchButton_MouseLeave;
@@ -214,7 +215,7 @@
             manualPatchButton.SizeMode = PictureBoxSizeMode.Zoom;
             manualPatchButton.TabIndex = 9;
             manualPatchButton.TabStop = false;
-            toolTip.SetToolTip(manualPatchButton, "Manually select your game installation directory for patching.");
+            toolTip.SetToolTip(manualPatchButton, "Manually select your game installation directory for patching");
             manualPatchButton.Click += manualPatchButton_Click;
             manualPatchButton.MouseEnter += manualPatchButton_MouseEnter;
             manualPatchButton.MouseLeave += manualPatchButton_MouseLeave;
