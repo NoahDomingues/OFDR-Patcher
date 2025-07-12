@@ -2,7 +2,7 @@
 
 A simple tool for patching Operation Flashpoint: Dragon Rising.
 
-[<img src="https://github.com/user-attachments/assets/ee17a7ad-3dee-4e24-bfe9-5e9536948777">](https://discord.gg/Z88NnTgpWU)
+[<img src="https://github.com/user-attachments/assets/8296952d-b975-4e73-9e24-76e1156e627b">](https://discord.gg/Z88NnTgpWU)
 
 ## 🐉 OFDR Patcher
 
