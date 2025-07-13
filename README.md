@@ -30,8 +30,6 @@ If you run into issues or want to contribute, check out our **[Discord server](h
 
 If you need support with **OFDR Patcher**, let me know in the Discord server's **#⁠🌐tech-support** or **#⁠💬modding-discussion** channel.
 
-I will continue working on this tool to try to fix the issues, and if there is any way you can contribute or help fix what's wrong with the tool that would be amazing. But in the meantime... enjoy! =)
-
 ## 👥 Contributors
 
 [![Contributors][contributors-image]][contributors-link]
