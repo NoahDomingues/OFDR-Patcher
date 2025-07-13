@@ -47,8 +47,8 @@ If you need support with **OFDR Patcher**, let me know in the Discord server's *
 
 [![Contributors][contributors-image]][contributors-link]
 
-[contributors-image]: https://contrib.rocks/image?repo=NoahDomingues/OFP-Extractor
-[contributors-link]: https://github.com/NoahDomingues/OFP-Extractor/graphs/contributors
+[contributors-image]: https://contrib.rocks/image?repo=NoahDomingues/OFDR-Patcher
+[contributors-link]: https://github.com/NoahDomingues/OFDR-Patche/graphs/contributors
 
 **⭐ If this tool was of any use to you, please consider giving it a Star - it would make my day! ⭐**
 
