@@ -25,6 +25,8 @@ OFDR Patcher is a simple tool to patch **[Operation Flashpoint: Dragon Rising](h
 - The "i" info button in the top-right corner opens a small window with some basic information about the patch and software.
 - The progress bar and log box in the center of the window display progress updates when patching or unpatching.
 
+**WARNING:** Do not patch your game twice over! Doing so might cause you to lose your original game backup.
+
 
 ## 🛠️ Features
 
