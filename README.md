@@ -15,6 +15,17 @@ OFDR Patcher is a simple tool to patch **[Operation Flashpoint: Dragon Rising](h
 - **Windows**: Download `OFDR v1.02 Patcher.exe` and double-click the downloaded file to launch, or run `OFDR v1.02 Patcher` from your command line (CMD).
 - **Linux**: Install [WINE](https://linuxconfig.org/installing-wine), download `OFDR v1.02 Patcher.exe`, then run the following command via terminal: ` wine "OFDR v1.02 Patcher"`. Note that the tool has *not* been tested on Linux.
 
+## 💡 Usage
+
+<img width="100%" alt="image" src="https://github.com/user-attachments/assets/693c96ac-4cd8-41e9-a056-8ca66b8aa58c" />
+
+- To patch your game, run OFDR Patcher and click the "Patch OFDR" button to automatically search for the game installation directory. If the game installation directory cannot be auto-detected, it then asks you to open the location manually. Then, it will patch your game.
+- To unpatch, run OFDR Patcher and click the "Unpatch OFDR" button to automatically search for the game installation directory. If the game installation directory cannot be auto-detected, it then asks you to open the location manually. Then, it will unpatch your game.
+- Use the folder icons next to the patch and unpatch buttons to skip auto-detecting the game install location and open the location manually.
+- The "i" info button in the top-right corner opens a small window with some basic information about the patch and software.
+- The progress bar and log box in the center of the window display progress updates when patching or unpatching.
+
+
 ## 🛠️ Features
 
 - Patch any instance of OFDR, regardless of previous game version
