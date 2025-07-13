@@ -10,10 +10,10 @@ OFDR Patcher is a simple tool to patch **[Operation Flashpoint: Dragon Rising](h
 
 ## 📥 Installation
 
-**OFDR Patcher** is a portable application—you don’t need a formal installer. Just grab the latest build from our **[Releases](https://github.com/NoahDomingues/OFDR-Patcher/releases)** section, and run the downloaded file:
+**OFDR Patcher** is a portable application—you don’t need a formal installer. Just grab the latest build from our **[Releases](https://github.com/NoahDomingues/OFDR-Patcher/releases)** section, unzip the archive, and run the downloaded file:
 
-- **Windows**: Download `OFDR.Patcher.exe` and double-click the downloaded file to launch, or run `OFDR.Patcher` from your command line (CMD).
-- **Linux**: Install [WINE](https://linuxconfig.org/installing-wine), download `OFDR.Patcher.exe`, then run the following command via terminal: `OFDR.Patcher`. Note that the tool has *not* been tested on Linux.
+- **Windows**: Download `OFDR v1.02 Patcher.exe` and double-click the downloaded file to launch, or run `OFDR v1.02 Patcher` from your command line (CMD).
+- **Linux**: Install [WINE](https://linuxconfig.org/installing-wine), download `OFDR v1.02 Patcher.exe`, then run the following command via terminal: ` wine "OFDR v1.02 Patcher"`. Note that the tool has *not* been tested on Linux.
 
 ## 🛠️ Features
 
